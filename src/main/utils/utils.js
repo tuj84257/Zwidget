@@ -49,8 +49,20 @@ function sendWindowToBottom(window, screenScaleFactor) {
 	preventZOrderChange(window);
 }
 
+/**
+ * Gets the browser window object of an opened widget.
+ * @param {String} widgetName the name of the opened widget
+ * @returns {BrowserWindow} the browser window object
+ */
+function getWidgetWindow(widgetName) {
+	const openedWidgets = global.share.openedWidgets;
+	const widget = openedWidgets.find(widget => widget.name == widgetName);
+	return widget.window;
+}
+
 module.exports = {
     createTray,
     getFocusedWindow,
-    sendWindowToBottom
+    sendWindowToBottom,
+	getWidgetWindow
 }

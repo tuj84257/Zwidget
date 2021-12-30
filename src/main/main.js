@@ -11,7 +11,7 @@ app.whenReady().then(() => {
 /** An array that stores all currently opened widgets. */
 let openedWidgets = [];
 
-// Handle the opening a widget
+// Handle the opening of a widget
 ipcMain.handle('open-widget', (event, widgetName) => {
 	const mainWindow = getFocusedWindow();
 	const widgetObject = allWidgets.find(widget => widget.name == widgetName);
@@ -40,4 +40,12 @@ ipcMain.handle('close-widget', (event, widgetName) => {
 ipcMain.handle('close-main-window', () => {
 	const mainWindow = getFocusedWindow();
 	mainWindow.hide();
+});
+
+// Share `ipcMain` globally, so that you can use it in the widgets' backend files.
+global.share = { ipcMain, openedWidgets }
+
+// Require each widget's path to the backend file, so that you can use `global.share.ipcMain` in each file.
+allWidgets.forEach(widget => {
+	require(widget.backend);
 });

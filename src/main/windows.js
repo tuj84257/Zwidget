@@ -51,10 +51,11 @@ class Widget {
 	 * @param {String} name - The name of the widget window.
 	 * @param {Number} width - The width of the widget window.
 	 * @param {Number} height - The height of the widget window.
+	 * @param {String} backend - The path to the backend file, relative to the main directory.
 	 * @param {String} preload - The absolute path to the preload file.
 	 * @param {String} htmlFile - The path from the root directory to the HTML file.
 	 */
-	constructor(name, width, height, preload, htmlFile){
+	constructor(name, width, height, backend, preload, htmlFile){
 		/** 
 		 * The name of the widget window. 
 		 * @type {String}
@@ -70,6 +71,11 @@ class Widget {
 		 * @type {Number}
 		 */
 		this.height = height;
+		/**
+		 * The path to the backend file, relative to the main directory.
+		 * @type {String}
+		 */
+		this.backend = backend;
 		/**
 		 * The absolute path to the preload file.
 		 * @type {String}
@@ -105,6 +111,7 @@ class Widget {
 		window.setSkipTaskbar(true);
 		let screenScaleFactor = screen.getPrimaryDisplay().scaleFactor;
 		sendWindowToBottom(window, screenScaleFactor);
+		// window.webContents.openDevTools();
 		return window;
 	}
 }
