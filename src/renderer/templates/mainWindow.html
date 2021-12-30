@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html class="h-full">
+	<head>
+		<meta charset="UTF-8">
+		<link href="../css/output/mainWindow.css" rel="stylesheet">
+		<title>Zwidget</title>
+	</head>
+	<body class="select-none h-full scrollbar-hide">
+		<!-- The close button -->
+		<div class="absolute top-0 right-0">
+			<button id="closeMainWindowButton" class="mt-1 mr-1 opacity-40 hover:opacity-80">
+				<!-- The icon below was taken from https://heroicons.com/ -->
+				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 22 22" fill="#fff">
+					<path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+				</svg>
+			</button>
+		</div>
+		<!-- The main part of the window -->
+		<div class="h-full rounded-t-xl rounded-bl-xl p-4 font-sans text-white" style="background-color: #3D4451;">
+			<p class="text-center text-lg mb-4">Launch and view widgets</p>
+			<div class="overflow-y-auto scrollbar-hide" style="max-height: 120px;">
+				<table class="table w-full table-compact">
+					<thead>
+						<tr> 
+							<th>Widget</th> 
+							<th>Actions</th>
+						</tr>
+				  	</thead>
+				  	<tbody id="tableBody"></tbody>
+				</table>
+			</div>
+		</div>
+		<script src="../javascript/mainWindow.js"></script>
+	</body>
+</html>
