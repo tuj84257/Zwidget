@@ -50,7 +50,7 @@ class Widget {
 	 * Initialize a widget.
 	 * @param {String} name - The name of the widget window.
 	 * @param {Number} width - The width of the widget window.
-	 * @param {Number} height - The height of the widget window.
+	 * @param {Number} height - The height of the widget window without the title section.
 	 * @param {String} backend - The path to the backend file, relative to the main directory.
 	 * @param {String} preload - The absolute path to the preload file.
 	 * @param {String} htmlFile - The path from the root directory to the HTML file.
@@ -70,7 +70,7 @@ class Widget {
 		 * The height of the widget window.
 		 * @type {Number}
 		 */
-		this.height = height;
+		this.height = height + (1/6 * height);   // 1/6th of the inputted height is taken by the title div, so you need to compensate for it.
 		/**
 		 * The path to the backend file, relative to the main directory.
 		 * @type {String}
