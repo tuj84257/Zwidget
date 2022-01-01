@@ -34,9 +34,6 @@ This script will generate these files in their respective directories (their nam
 - A template HTML file in `src/renderer/templates`.
 - An input CSS file in `src/renderer/css/input`. You will most likely never have to change this file.
 - A JavaScript file in `src/renderer/javascript`. This file will contain the renderer logic of the widget.
-
-> These files will be the frontend of your widget. Since Tailwind CSS is used, you will need to add a `tailwind-compile-[widgetname]` npm script in `package.json`. Make sure to add this script to the `npm start` command, as well.
-
 - A JavaScript preload file in the `src/preload` directory. You will most likely never have to change this file.
 - A JavaScript file in `src/main/widgets-backend`. This file will contain the backend logic of your widget.
 

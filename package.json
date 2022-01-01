@@ -5,10 +5,9 @@
 	"main": "./src/main/main.js",
 	"scripts": {
 		"create-files": "powershell -file ./scripts/createFiles.ps1",
-		"tailwind-compile-mainwindow": "npx tailwindcss -i ./src/renderer/css/input/mainWindow.css -o ./src/renderer/css/output/mainWindow.css",
-		"tailwind-compile-batterylevel": "npx tailwindcss -i ./src/renderer/css/input/batteryLevel.css -o ./src/renderer/css/output/batteryLevel.css",
+		"build-tailwind": "powershell ./scripts/buildTailwind.ps1",
 		"electron": "electron . --wm-window-animations-disabled",
-		"start": "npm run tailwind-compile-mainwindow && npm run tailwind-compile-batterylevel && npm run electron"
+		"start": "npm run build-tailwind && npm run electron"
 	},
 	"repository": "https://github.com/tuj84257/Zwidget",
 	"author": "Ardit Duhanxhiu",
