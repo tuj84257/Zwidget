@@ -1,8 +1,15 @@
 const ipcMain = global.share.ipcMain;
 const { getWidgetWindow } = require('../utils/utils');
+const batteryLevel = require('battery-level');
 
-ipcMain.handle('test', () => {
-    console.log('tested!');
+// The battery level is more accurate for computers with one battery.
+// It gets more complicated for laptops like Microsoft Surface Book 2:
+// https://superuser.com/q/1696812/1655201
+
+ipcMain.handle('get-battery-level', () => {
     const batteryLevelWindow = getWidgetWindow('Battery Level');
-    batteryLevelWindow.webContents.send('tested');
+    (async () => {
+        let levelOfBattery = (await batteryLevel());
+        batteryLevelWindow.webContents.send('got-battery-level', parseInt(levelOfBattery * 100));
+    })();
 });

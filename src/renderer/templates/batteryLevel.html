@@ -10,12 +10,13 @@
 		<div class="h-5/6 rounded-xl p-4 font-sans bg-base drag">
 			<!-- The progress circle -->
 			<svg width="120" height="120">
-				<circle class="-rotate-90 origin-[50%_50%] stroke-accent stroke-5 fill-transparent" r="52" cx="60" cy="63"/>
-				<text class="text-xl fill-white" x="63" y="64" text-anchor="middle">14%</text>
+				<circle id="mainCircle" class="-rotate-90 origin-[50%_50%] stroke-accent stroke-5 fill-transparent" r="52" cx="62" cy="63"/>
+				<text id="batteryPercentageText" class="text-xl fill-white" x="63" y="64" text-anchor="middle"></text>
+				<circle class="-rotate-90 origin-[50%_50%] stroke-accent opacity-20 stroke-5 fill-transparent" r="52" cx="62" cy="63"/>
 			</svg>
 		</div>
 		<!-- The title of the widget -->
-		<div class="h-1/6 text-center text-white text-sm font-sans">
+		<div class="h-1/6 text-center text-white text-sm font-sans p-1">
 			<p>Battery Level</p>
 		</div>
 		<script src="../javascript/batteryLevel.js"></script>
