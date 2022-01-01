@@ -9,13 +9,13 @@
 1. Run `npm install` in the root directory to install the dependencies.
 2. Run `npm start` to build the CSS files, and start the app.
 
-**NOTE**: The `npm start` command on Windows will work only if you're running the `npm` scripts with the `Git Bash` shell (since `&&` is being used). To use the `Git Bash` shell, run this command on the terminal:
+**NOTE**: The npm scripts in this repo's `package.json` will work only if you're running them with the `Git Bash` shell. To use the `Git Bash` shell, run this command on the terminal:
 
 ```bash
 npm config set script-shell "C:\Program Files\Git\bin\bash.exe"
 ```
 
-This is assuming that you have installed `Git Bash` on your machine, and your `Git Bash` executable is located in the path above. However, you can also use the `PowerShell` shell like this:
+This is assuming you have installed `Git Bash` on your machine, and your `Git Bash` executable is located in the path above. However, you can also use the `PowerShell` shell like this, but keep in mind you'd have to make changes to `package.json` and the scripts in the `scripts` directory:
 
 ```bash
 npm config set script-shell "powershell"
@@ -23,10 +23,10 @@ npm config set script-shell "powershell"
 
 ## How to add your own widget (to the existing file structure)
 
-1. Run the `createFiles` PowerShell script:
+1. Run the `create-files` npm script in the root directory:
 
-```powershell
-.\scripts\createFiles.ps1 '[Widget Name]'   # e.g. .\scripts\createFiles.ps1 'Stocks Widget'
+```bash
+npm run create-files '[Widget Name]'   # e.g. npm run create-files 'Stock Watch'
 ```
 
 This script will generate these files in their respective directories (their names will be `camelCased` according to the name of the widget):

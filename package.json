@@ -4,6 +4,7 @@
 	"description": "Add widgets easily to your desktop",
 	"main": "./src/main/main.js",
 	"scripts": {
+		"create-files": "powershell -file ./scripts/createFiles.ps1",
 		"tailwind-compile-mainwindow": "npx tailwindcss -i ./src/renderer/css/input/mainWindow.css -o ./src/renderer/css/output/mainWindow.css",
 		"tailwind-compile-batterylevel": "npx tailwindcss -i ./src/renderer/css/input/batteryLevel.css -o ./src/renderer/css/output/batteryLevel.css",
 		"electron": "electron . --wm-window-animations-disabled",
