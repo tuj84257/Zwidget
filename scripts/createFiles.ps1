@@ -1,7 +1,9 @@
-# Example: `createFiles.ps1 'My Widget'`
+# Example: createFiles.ps1 'My Widget' '200' '400'
 
 # Get the script's argument (the widget's name)
 $widgetName = $args[0]
+$widgetWidth = $args[1]
+$widgetHeight = $args[2]
 
 # Create the necessary directories
 $null = New-Item -Path '.\scripts\output' -ItemType Directory
@@ -25,3 +27,6 @@ Copy-Item -Path ".\scripts\output\*.html" -Destination ".\src\renderer\templates
 
 # Remove the `output` directory
 Remove-Item -Path ".\scripts\output" -Force -Recurse
+
+# Create the widget object
+.\scripts\utils\addWidget.ps1 $widgetName $widgetWidth $widgetHeight
