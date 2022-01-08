@@ -1,2 +1,2 @@
 node_modules
-src/renderer/css/output/*.css
+src/*/frontend/css/output.css
