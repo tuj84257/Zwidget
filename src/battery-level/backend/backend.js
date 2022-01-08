@@ -12,6 +12,10 @@ ipcMain.handle('get-battery-level', () => {
     const batteryLevelWindow = getWidgetWindow('Battery Level');
     (async () => {
         let levelOfBattery = (await batteryLevel());
-        batteryLevelWindow.webContents.send('got-battery-level', parseInt(levelOfBattery * 100));
+        try {
+            batteryLevelWindow.webContents.send('got-battery-level', parseInt(levelOfBattery * 100));
+        } catch {
+            console.log('Could not send the battery level asynchronously to the renderer because the widget was closed.');
+        }
     })();
 });
