@@ -1,10 +1,10 @@
+. .\scripts\utils\utils.ps1
+
 $widgetName = $args[0]
-$widgetNameTitleCased = (Get-Culture).TextInfo.ToTitleCase($widgetName) -Replace ' ', ''
-$firstCharacter = $widgetNameTitleCased.Substring(0, 1)
-$firstCharacterLowerCase = $firstCharacter.ToLower()
-$widgetNameCamelCased = $widgetNameTitleCased -Replace $firstCharacter, $firstCharacterLowerCase
-$outputPath = ".\scripts\output\backend\" + $widgetNameCamelCased + ".js"
-Copy-Item ".\scripts\templates\backend.js" -Destination $outputPath
-$templateBackendContent = Get-Content -Path $outputPath -Raw
+$widgetDirectory = $args[1]
+$widgetNameCamelCased = Get-CamelCasedName $widgetName
+$destinationPath = ".\src\" + $widgetDirectory + "\backend"
+Copy-Item ".\scripts\templates\backend.js" -Destination $destinationPath
+$templateBackendContent = Get-Content -Path $($destinationPath + "\backend.js") -Raw
 $templateBackendUpdatedContent = $templateBackendContent -Replace '##widgetName##', $widgetName -Replace '##widgetNameCamelCase##', $widgetNameCamelCased
-Set-Content -Path $outputPath -Value $templateBackendUpdatedContent
+Set-Content -Path $($destinationPath + "\backend.js") -Value $templateBackendUpdatedContent

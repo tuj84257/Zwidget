@@ -1,10 +1,6 @@
-$widgetName = $args[0]
-$widgetNameTitleCased = (Get-Culture).TextInfo.ToTitleCase($widgetName) -Replace ' ', ''
-$firstCharacter = $widgetNameTitleCased.Substring(0, 1)
-$firstCharacterLowerCase = $firstCharacter.ToLower()
-$widgetNameCamelCased = $widgetNameTitleCased -Replace $firstCharacter, $firstCharacterLowerCase
-$outputPath = ".\scripts\output\" + $widgetNameCamelCased + ".html"
-Copy-Item ".\scripts\templates\template.html" -Destination $outputPath
-$templateHTMLContent = Get-Content -Path $outputPath -Raw
-$templateHTMLUpdatedContent = $templateHTMLContent -Replace '##widgetName##', $widgetName -Replace '##cssOrJsFile##', $widgetNameCamelCased
-Set-Content -Path $outputPath -Value $templateHTMLUpdatedContent
+$widgetDirectory = $args[0]
+$destinationPath = ".\src\" + $widgetDirectory + "\frontend"
+Copy-Item -Path ".\scripts\templates\template.html" -Destination $destinationPath
+$templateHTMLContent = Get-Content -Path $($destinationPath + "\template.html") -Raw
+$templateHTMLUpdatedContent = $templateHTMLContent -Replace '##widgetName##', $widgetName
+Set-Content -Path $($destinationPath + "\template.html") -Value $templateHTMLUpdatedContent

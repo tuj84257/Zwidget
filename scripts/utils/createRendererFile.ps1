@@ -1,10 +1,10 @@
+. .\scripts\utils\utils.ps1
+
 $widgetName = $args[0]
-$widgetNameTitleCased = (Get-Culture).TextInfo.ToTitleCase($widgetName) -Replace ' ', ''
-$firstCharacter = $widgetNameTitleCased.Substring(0, 1)
-$firstCharacterLowerCase = $firstCharacter.ToLower()
-$widgetNameCamelCased = $widgetNameTitleCased -Replace $firstCharacter, $firstCharacterLowerCase
-$outputPath = ".\scripts\output\renderer\" + $widgetNameCamelCased + ".js"
-Copy-Item ".\scripts\templates\renderer.js" -Destination $outputPath
-$templateRendererContent = Get-Content -Path $outputPath -Raw
+$widgetDirectory = $args[1]
+$widgetNameCamelCased = Get-CamelCasedName $widgetName
+$destinationPath = ".\src\" + $widgetDirectory + "\frontend\javascript"
+Copy-Item ".\scripts\templates\renderer.js" -Destination $destinationPath
+$templateRendererContent = Get-Content -Path $($destinationPath + "\renderer.js") -Raw
 $templateRendererUpdatedContent = $templateRendererContent -Replace '##widgetName##', $widgetName -Replace '##widgetNameCamelCase##', $widgetNameCamelCased
-Set-Content -Path $outputPath -Value $templateRendererUpdatedContent
+Set-Content -Path $($destinationPath + "\renderer.js") -Value $templateRendererUpdatedContent
