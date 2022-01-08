@@ -8,7 +8,7 @@ Zwidget is an <a href="https://github.com/electron/electron">Electron</a> app th
 
 ## Architecture
 
-Each widget has a backend layer and a frontend layer. The backend is usually a single JavaScript file, where Node.js APIs can be used, while the frontend is composed of an HTML template, a CSS file, and a JavaScript file, where modern web browser APIs can be used in the renderer process. Conforming to the architecture of an Electron app, a preload JavaScript file helps the backend and the frontend communicate to each-other by exposing API endpoints to the renderer.
+Each widget has a backend layer and a frontend layer. The backend is usually a single JavaScript file, that has access to the main process, and where Node.js APIs can be used. The frontend is composed of an HTML template, a CSS file, and a JavaScript file, where modern web browser APIs can be used in the renderer process. Conforming to the architecture of an Electron app, a preload JavaScript file helps the backend and the frontend communicate to each-other by exposing API endpoints to the renderer.
 
 <p align="center"><img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"><img src="https://img.shields.io/badge/Electron-2B2E3A?style=for-the-badge&logo=electron&logoColor=9FEAF9"><img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"></p>
 
@@ -39,12 +39,12 @@ To add your widget to the existing file structure, run the `create-files` npm sc
 npm run create-files '[Widget Name]' '[width]' '[height]'   # e.g. npm run create-files 'Stock Watch' '400' '200'
 ```
 
-This script will generate these files in their respective directories (their names will be `camelCased` according to the name of the widget):
+This script will generate these files in their respective directories:
 
-- A template HTML file in `src/renderer/templates`.
-- An input CSS file in `src/renderer/css/input`. You will most likely never have to change this file.
-- A JavaScript file in `src/renderer/javascript`. This file will contain the renderer logic of the widget.
-- A JavaScript preload file in the `src/preload` directory. You will most likely never have to change this file.
-- A JavaScript file in `src/main/widgets-backend`. This file will contain the backend logic of your widget.
+- A template HTML file in `src/[widget-name]/frontend/template.html`.
+- An input CSS file in `src/[widget-name]/frontend/css`. You will most likely never have to change this file.
+- A JavaScript file in `src/[widget-name]/frontend/javascript`. This file will contain the renderer logic of the widget.
+- A JavaScript preload file in the `src/[widget-name]/preload` directory. You will most likely never have to change this file.
+- A JavaScript file in `src/[widget-name]/backend`. This file will contain the backend logic of your widget.
 
-The script will also define a widget object in the `widgets.js` file, located in `src/main`, and add this file to the `allWidgets` array. This is necessary for the window of the widget to be created when needed.
+The script will also define a widget object in the `widgets.js` file, located in `src/main-window`, and add this file to the `allWidgets` array. This is necessary for the window of the widget to be created when needed.
