@@ -21,13 +21,13 @@ function createMainWindow (allWidgets) {
 		movable: false,
 		resizable: false,
 		webPreferences: {
-			preload: path.join(__dirname, '../preload/mainWindow.js'),
+			preload: path.join(__dirname, 'preload/preload.js'),
 			nodeIntegration: false,		// true		you can use the commented settings to use the Node.js
 			contextIsolation: true		// false	APIs in the renderer, instead of the preload process
 		},
 	});
 
-	mainWindow.loadFile('./src/renderer/templates/mainWindow.html');
+	mainWindow.loadFile('./src/main-window/frontend/template.html');
 	mainWindow.setSkipTaskbar(true);
 	let tray = null;
 

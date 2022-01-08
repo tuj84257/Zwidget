@@ -1,5 +1,7 @@
+// The back-end for the Battery Level widget
+
 const ipcMain = global.share.ipcMain;
-const { getWidgetWindow } = require('../utils/utils');
+const { getWidgetWindow } = require('../../main-window/utils/utils');
 const batteryLevel = require('battery-level');
 
 // The battery level is more accurate for computers with one battery.

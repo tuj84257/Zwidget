@@ -1,9 +1,7 @@
-$inputCSSPath = '.\src\renderer\css\input'
-$outputCSSPath = '.\src\renderer\css\output'
-$inputFileNames = Get-ChildItem -Path $inputCSSPath -Name
+$srcDirectories = Get-ChildItem -Path ".\src" -Name
 
-foreach($inputFileName in $inputFileNames) {
-    $inputFile = $inputCSSPath + '\' + $inputFileName
-    $outputFile = $outputCSSPath + '\' + $inputFileName
+foreach ($srcDirectory in $srcDirectories) {
+    $inputFile = ".\src\" + $srcDirectory + "\frontend\css\input.css"
+    $outputFile = ".\src\" + $srcDirectory + "\frontend\css\output.css"
     npx tailwindcss -i $inputFile -o $outputFile
 }

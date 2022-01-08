@@ -2,7 +2,7 @@
 	"name": "zwidget",
 	"version": "1.0.0",
 	"description": "Add widgets easily to your desktop",
-	"main": "./src/main/main.js",
+	"main": "./src/main-window/main.js",
 	"scripts": {
 		"create-files": "powershell -file ./scripts/createFiles.ps1",
 		"build-tailwind": "powershell ./scripts/buildTailwind.ps1",

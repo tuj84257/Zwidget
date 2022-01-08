@@ -1,8 +1,8 @@
 module.exports = {
 	content: [
-		"./src/renderer/templates/*.html",
-		"./src/renderer/javascript/*.js",
-		"./src/preload/*.js"
+		"./src/*/frontend/template.html",
+		"./src/*/frontend/javascript/*.js",
+		"./src/*/preload/*.js"
 	],
 	theme: {
 		extend: {
