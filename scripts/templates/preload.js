@@ -1,4 +1,4 @@
-// The preload for the ##widgetName## window
+// The preload for the ##widgetName## widget
 
 const { contextBridge, ipcRenderer } = require('electron');
 

@@ -1,4 +1,4 @@
-// Renderer process for the ##widgetName## widget
+// The renderer for the ##widgetName## widget
 
 ##widgetNameCamelCase##WindowAPI.sendToBackend('your-channel-here');
 

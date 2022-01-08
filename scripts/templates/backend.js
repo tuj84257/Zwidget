@@ -1,7 +1,7 @@
-// The backend for ##widgetName##
+// The back-end for the ##widgetName## widget
 
 const ipcMain = global.share.ipcMain;
-const { getWidgetWindow } = require('../utils/utils');
+const { getWidgetWindow } = require('../../main-window/utils/utils');
 
 ipcMain.handle('your-channel-here', () => {
     // your logic here
