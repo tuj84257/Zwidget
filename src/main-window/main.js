@@ -3,6 +3,8 @@ const { createMainWindow } = require('./windows');
 const { allWidgets } = require('./widgets');
 const { getFocusedWindow } = require('./utils/utils');
 
+app.commandLine.appendSwitch('wm-window-animations-disabled');
+
 // Create the main window when the application is ready
 app.whenReady().then(() => {
 	createMainWindow(allWidgets);
