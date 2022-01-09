@@ -48,3 +48,13 @@ This script will generate these files in their respective directories:
 - A JavaScript file in `src/[widget-name]/backend`. This file will contain the backend logic of your widget.
 
 The script will also define a widget object in the `widgets.js` file, located in `src/main-window`, and add this file to the `allWidgets` array. This is necessary for the window of the widget to be created when needed.
+
+## How to build the distributable
+
+In the root directory, run the build npm script:
+
+```bash
+npm run build
+```
+
+The distributable files will be created in the `dist` folder, located in the root directory.
