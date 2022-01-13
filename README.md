@@ -6,7 +6,7 @@ Zwidget is an <a href="https://github.com/electron/electron">Electron</a> app th
 
 <p align="center"><img src="example.gif"></img></p>
 
-## Architecture
+## Anatomy
 
 Each widget has a backend layer and a frontend layer. The backend is usually a single JavaScript file, that has access to the main process, and where Node.js APIs can be used. The frontend is composed of an HTML template, a CSS file, and a JavaScript file, where modern web browser APIs can be used in the renderer process. Conforming to the architecture of an Electron app, a preload JavaScript file helps the backend and the frontend communicate to each-other by exposing API endpoints to the renderer.
 
