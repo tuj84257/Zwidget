@@ -32,7 +32,13 @@ ipcMain.handle('close-widget', (event, widgetName) => {
 	const mainWindow = getFocusedWindow();
 	const openedWidget = openedWidgets.find(widget => widget.name == widgetName);
 	// close the window of the widget
-	openedWidget.window.close();
+	try {
+		openedWidget.window.close();
+	} catch (error) {
+		if(error instanceof(TypeError)){
+			console.log('The widget has already been destroyed.')
+		}
+	}
 	// remove the widget from the list of the opened widgets
 	openedWidgets.splice(openedWidgets.indexOf(openedWidget), 1);
 	mainWindow.webContents.send('closed-widget', widgetName);
