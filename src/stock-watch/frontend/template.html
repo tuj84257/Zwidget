@@ -23,13 +23,33 @@
 					</div>
 				</div>
 				<!-- Right column -->
-				<div style="position: relative">
-					<canvas id="myChart" width="350" height="300"></canvas>
+				<div style="width: 120px; margin-top: 10px;">
+					<canvas height="240" id="myChart"></canvas>
+				</div>
+			</div>
+		</div>
+		<!-- The search button -->
+		<div class="dropdown dropdown-end absolute top-1 right-0.5">
+			<button class="opacity-30 hover:opacity-80 no-drag" style="margin-left: 188px" id="searchButton">
+				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+					<path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+				</svg>
+			</button> 
+			<div class="shadow card compact dropdown-content bg-base-200 rounded-box w-52" id="dropdown">
+				<div class="card-body">
+					<div class="form-control no-drag">
+						<input type="text" placeholder="stock symbol" class="input input-sm input-bordered">
+						<button class="absolute top-4 right-4 rounded-l-none btn btn-sm btn-primary" id="searchButtonForm">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+								<path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+							</svg>
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
 		<!-- The title of the widget -->
-		<div class="h-1/6 text-center text-white text-sm font-sans p-1">
+		<div class="h-1/6 text-center text-white text-sm font-sans p-1" id="widgetTitle">
 			<p>Stock Watch</p>
 		</div>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>

@@ -6,14 +6,14 @@ stockWatchWindowAPI.receiveFromBackend('your-channel-here', (args) => {
     // your logic here
 });
 
-
+// The chart
 const ctx = document.getElementById('myChart').getContext('2d');
 const myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: [1, 2, 3, 4, 5, 6],
+        labels: [1, 2, 3, 4, 5],
         datasets: [{
-            data: [214, 230, 224, 260, 250, 256],
+            data: [999, 1056, 1179, 1109, 1019],
             backgroundColor: 'transparent',
             borderColor: '#37cdbe',
             borderWidth: 3,
@@ -36,6 +36,30 @@ const myChart = new Chart(ctx, {
             legend: {
                 display: false
             }
+        },
+        layout: {
+            padding: {
+                top: 5
+            }
         }
     }
 });
+
+// The search button and search form
+// (need to do change the position of the dropdown dynamically 
+// because otherwise the search form becomes draggable, and the
+// user can't click inside the form)
+document.getElementById('searchButton').onclick = () => {
+    document.getElementById('dropdown').style.position = 'relative';
+    document.getElementById('dropdown').style.display = 'flex';
+}
+
+document.getElementById('searchButtonForm').onclick = () => {
+    document.getElementById('dropdown').style.position = 'absolute';
+    document.getElementById('dropdown').style.display = 'none';
+}
+
+document.getElementById('widgetTitle').onclick = () => {
+    document.getElementById('dropdown').style.position = 'absolute';
+    document.getElementById('dropdown').style.display = 'none';
+}
