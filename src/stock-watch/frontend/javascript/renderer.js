@@ -50,8 +50,14 @@ const myChart = new Chart(ctx, {
 // because otherwise the search form becomes draggable, and the
 // user can't click inside the form)
 document.getElementById('searchButton').onclick = () => {
-    document.getElementById('dropdown').style.position = 'relative';
-    document.getElementById('dropdown').style.display = 'flex';
+    if(document.getElementById('dropdown').style.position === 'relative'){
+        document.getElementById('dropdown').style.display = 'none';
+        document.getElementById('dropdown').style.position = 'absolute';
+    }
+    else {
+        document.getElementById('dropdown').style.position = 'relative';
+        document.getElementById('dropdown').style.display = 'flex';
+    }
 }
 
 document.getElementById('searchButtonForm').onclick = () => {
