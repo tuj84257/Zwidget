@@ -73,7 +73,16 @@ function emptyDiv(element) {
  * @param {Element} mainContent - the main content div where the information will be displayed
  */
 function displayStockInfo(stockSymbol, mainContent) {
-    mainContentHTML = `
+    stockWatchWindowAPI.sendToBackend('get-stock-info', stockSymbol);
+    stockWatchWindowAPI.receiveFromBackend('stock-info', (stockData) => {
+        if(stockData === 'error')
+            console.log('Could not find stock price information for the given stock symbol!');
+        else {
+            console.log(stockData);
+        }
+    });
+
+    const mainContentHTML = `
         <div class="grid grid-cols-2 gap-2">\
             <!-- Left column -->\
             <div>\

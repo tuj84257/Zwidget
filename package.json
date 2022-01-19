@@ -23,6 +23,7 @@
 		"ref-napi": "^3.0.3",
 		"ref-struct-di": "^1.1.1",
 		"tailwind-scrollbar-hide": "^1.1.7",
-		"win-setwindowpos": "^2.1.0"
+		"win-setwindowpos": "^2.1.0",
+		"yahoo-finance2": "^2.1.1"
 	}
 }

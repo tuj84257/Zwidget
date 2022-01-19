@@ -38,9 +38,3 @@ searchInput.addEventListener('keyup', (event) => {
             displayStockInfo(stockSymbol, mainContent);
     }
 });
-
-stockWatchWindowAPI.sendToBackend('your-channel-here');
-
-stockWatchWindowAPI.receiveFromBackend('your-channel-here', (args) => {
-    // your logic here
-});
