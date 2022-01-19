@@ -12,7 +12,7 @@ ipcMain.handle('get-stock-info', (event, stockSymbol) => {
     const twentyDaysAgoDateTime = new Date(currentDateTime - twentyDays);
     const twentyDaysAgoDate = twentyDaysAgoDateTime.toISOString().split('T')[0];
     const results = yahooFinance.historical(stockSymbol, { period1: twentyDaysAgoDate, period2: currentDate });
-    
+
     results.then(jsonArray => {
         const lastFiveDaysData = jsonArray.slice(1).slice(-5);
         let chartLabels = [], chartData = [];
@@ -21,7 +21,7 @@ ipcMain.handle('get-stock-info', (event, stockSymbol) => {
             chartData.push(parseFloat(day.close.toFixed(2)));
         });
         const lastClosingPrice = chartData.slice(-1)[0];
-        const previousClosingPrice = chartData.slice(-2)[0];
+        const previousClosingPrice = chartData[0];
         const closingPriceDifference = parseFloat((lastClosingPrice - previousClosingPrice).toFixed(2));
         const differencePercentage = parseFloat(((Math.abs(closingPriceDifference) / parseFloat(previousClosingPrice.toFixed(2))) * 100).toFixed(2));
         let stockData = {};

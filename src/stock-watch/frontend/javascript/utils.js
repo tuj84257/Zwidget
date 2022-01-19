@@ -74,43 +74,51 @@ function emptyDiv(element) {
  */
 function displayStockInfo(stockSymbol, mainContent) {
     stockWatchWindowAPI.sendToBackend('get-stock-info', stockSymbol);
+    // After the first call to the backend, get
+    // stock info from the backend every 4 hours
+    const interval = setInterval(() => {
+        stockWatchWindowAPI.sendToBackend('get-stock-info', stockSymbol);
+    }, 4 * 3600 * 1000);
+    // Receive the stock data from the backend
     stockWatchWindowAPI.receiveFromBackend('stock-info', (stockData) => {
-        if(stockData === 'error')
-            console.log('Could not find stock price information for the given stock symbol!');
-        else {
-            console.log(stockData);
+        emptyDiv(mainContent);
+        if(stockData === 'error') {
+            clearInterval(interval);
+            mainContent.insertAdjacentHTML('afterbegin', `\
+                <p class="text-center text-white mt-[24px]">\
+                    Could not find stock price information for the given stock symbol!\
+                </p>\
+            `);
         }
-    });
-
-    const mainContentHTML = `
-        <div class="grid grid-cols-2 gap-2">\
-            <!-- Left column -->\
-            <div>\
-                <p class="font-thin text-white">$${stockSymbol.toUpperCase()}</p>\
-                <div class="mt-9">\
-                    <p class="text-white text-3xl font-thin">$256.45</p>\
-                    <div class="flex text-accent">\
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-45 mt-1" viewBox="3 -4 28 28" fill="currentColor">\
-                            <path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />\
-                        </svg>\
-                        <span class="-ml-1.5 text-sm">$9.51 (3.85%)</span>\
+        else {
+            let chartColor = (stockData.closingPriceDifference < 0) ? '#bd1491' : '#37cdbe';
+            let classColor = (stockData.closingPriceDifference < 0) ? 'text-secondary' : 'text-accent';
+            let arrowRotationAngleClass = (stockData.closingPriceDifference < 0) ? 'rotate-225' : 'rotate-45';
+            let arrowViewBox = (stockData.closingPriceDifference < 0) ? '-10 -4 28 28' : '3 -4 28 28'
+            const mainContentHTML = `
+                <div class="grid grid-cols-2 gap-2">\
+                    <!-- Left column -->\
+                    <div>\
+                        <p class="font-thin text-white">$${stockSymbol.toUpperCase()}</p>\
+                        <div class="mt-9">\
+                            <p class="text-white text-3xl font-thin">$${stockData.lastClosingPrice}</p>\
+                            <div class="flex ${classColor}">\
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${arrowRotationAngleClass} mt-1" viewBox="${arrowViewBox}" fill="currentColor">\
+                                    <path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />\
+                                </svg>\
+                                <span class="-ml-1.5 text-sm">$${Math.abs(stockData.closingPriceDifference)} (${stockData.differencePercentage}%)</span>\
+                            </div>\
+                        </div>\
+                    </div>\
+                    <!-- Right column -->\
+                    <div class="w-[120px] mt-[10px]">\
+                        <canvas height="240" id="stockChart"></canvas>\
                     </div>\
                 </div>\
-            </div>\
-            <!-- Right column -->\
-            <div class="w-[120px] mt-[10px]">\
-                <canvas height="240" id="stockChart"></canvas>\
-            </div>\
-        </div>\
-    `
-    // Empty the main content div
-    emptyDiv(mainContent);
-    // Insert the HTML with the stock price information
-    mainContent.insertAdjacentHTML('afterbegin', mainContentHTML);
-    // Generate the chart
-    const chartCanvas = document.getElementById('stockChart').getContext('2d');
-    const chart = generateChart(chartCanvas, [1, 2, 3, 4, 5], [999, 1056, 1179, 1109, 1019], '#37cdbe');
-    // Change chart color
-    // chart.data.datasets[0].borderColor = '#000';
-    // chart.update();
+            `
+            mainContent.insertAdjacentHTML('afterbegin', mainContentHTML);
+            const chartCanvas = document.getElementById('stockChart').getContext('2d');
+            const chart = generateChart(chartCanvas, stockData.chartLabels, stockData.chartData, chartColor);
+        }
+    });
 }
