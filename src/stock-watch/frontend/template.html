@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html class="h-full">
+	<head>
+		<meta charset="UTF-8">
+		<link href="./css/output.css" rel="stylesheet">
+		<title>Stock Watch</title>
+	</head>
+	<body class="select-none h-full">
+		<!-- The main section of the widget -->
+		<div class="h-5/6 rounded-xl p-4 font-sans bg-base drag overflow-hidden">
+			<div id="mainContent">
+				<p class="text-center text-white mt-[30px]">
+					Click on the search button in the upper-right corner to make a query.
+				</p>
+			</div>
+		</div>
+		<!-- The search button -->
+		<div class="dropdown dropdown-end absolute top-1 right-0.5">
+			<button class="opacity-40 hover:opacity-80 no-drag ml-[188px]" id="searchButton">
+				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="#fff">
+					<path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+				</svg>
+			</button> 
+			<div class="shadow card compact dropdown-content bg-base-200 rounded-box w-52" id="dropdown">
+				<div class="card-body">
+					<div class="form-control no-drag">
+						<input type="text" id="searchInput" placeholder="stock symbol" class="input input-sm input-bordered text-[#A1A1AA] focus:ring-0">
+						<button class="absolute top-4 right-4 rounded-l-none btn btn-sm btn-primary" id="searchButtonForm">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+								<path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+							</svg>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- The title of the widget -->
+		<div class="h-1/6 text-center text-white text-sm font-sans p-1" id="widgetTitle">
+			<p>Stock Watch</p>
+		</div>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+		<script src="./javascript/utils.js"></script>
+		<script src="./javascript/renderer.js"></script>
+	</body>
+</html>

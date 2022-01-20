@@ -7,7 +7,10 @@ module.exports = {
 	theme: {
 		extend: {
 			strokeWidth: {
-				'5': '5px',
+				'5': '5px'
+			},
+			rotate: {
+				'225': '225deg'
 			}
 		},
 	},
