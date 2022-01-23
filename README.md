@@ -58,3 +58,8 @@ npm run build
 ```
 
 The distributable files will be created in the `dist` folder, located in the root directory.
+
+---------
+
+:point_right: This is where I obtained the awesome Zwidget icon:  <a href="https://www.flaticon.com/free-icons/shapes-and-symbols">Shapes and symbols icons created by Rakib Hassan Rahim - Flaticon</a>
+

@@ -8,7 +8,7 @@
 		"build-tailwind": "powershell ./scripts/buildTailwind.ps1",
 		"electron": "electron .",
 		"start": "npm run build-tailwind && npm run electron",
-		"build": "electron-packager . Zwidget --platform=win32 --arch=x64 --out=dist --icon=./cute_icon.ico --overwrite=true"
+		"build": "electron-packager . Zwidget --platform=win32 --arch=x64 --out=dist --icon=./zwidget.ico --overwrite=true"
 	},
 	"repository": "https://github.com/tuj84257/Zwidget",
 	"author": "Ardit Duhanxhiu",
