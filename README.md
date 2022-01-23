@@ -51,15 +51,15 @@ The script will also define a widget object in the `widgets.js` file, located in
 
 ## How to build the distributable
 
-### The portable application
+### The installer and the portable application
 
-In the root directory, run the `build-portable` npm script:
+In the root directory, run the `build` npm script:
 
 ```bash
-npm run build-portable
+npm run build
 ```
 
-The distributable files will be created in `dist/Zwidget-portable`.
+The distributable files will be created in `dist/Zwidget`.
 
 ### The unpacked application
 

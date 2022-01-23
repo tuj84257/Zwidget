@@ -1,27 +1,43 @@
 {
 	"name": "zwidget",
 	"version": "1.0.0",
-	"description": "Add widgets easily to your desktop",
+	"description": "Add widgets easily to your desktop.",
 	"main": "./src/main-window/main.js",
 	"scripts": {
 		"create-files": "powershell -file ./scripts/createFiles.ps1",
 		"build-tailwind": "powershell ./scripts/buildTailwind.ps1",
 		"electron": "electron .",
 		"start": "npm run build-tailwind && npm run electron",
-		"build-portable": "powershell ./scripts/checkPortableDirectory.ps1 && electron-builder build --win portable",
+		"build": "powershell ./scripts/checkPortableDirectory.ps1 && electron-builder build",
 		"build-unpacked": "electron-packager . Zwidget --platform=win32 --arch=x64 --out=dist --icon=./assets/zwidget.ico --overwrite=true"
 	},
 	"build": {
 		"appId": "zwidget",
 		"productName": "Zwidget",
 		"copyright": "Copyright (C) 2022 Ardit Duhanxhiu",
-		"artifactName": "Zwidget.exe",
 		"directories": {
-			"output": "dist/Zwidget-portable"
+			"output": "dist/Zwidget"
 		},
 		"icon": "assets/zwidget.ico",
+		"win": {
+			"target": [
+				"nsis",
+				"portable"
+			]
+		},
 		"portable": {
-			"splashImage": "assets/zwidget.bmp3"
+			"splashImage": "assets/zwidget.bmp3",
+			"artifactName": "Zwidget.exe"
+		},
+		"nsis": {
+			"artifactName": "zwidget-installer.exe",
+			"oneClick": false,
+			"installerIcon": "assets/zwidget.ico",
+			"installerSidebar": "assets/installer-sidebar.bmp3",
+			"uninstallerIcon": "assets/zwidget.ico",
+			"uninstallDisplayName": "Zwidget",
+			"license": "LICENSE.md",
+			"allowToChangeInstallationDirectory": true
 		}
 	},
 	"repository": "https://github.com/tuj84257/Zwidget",
