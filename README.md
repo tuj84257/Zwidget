@@ -4,7 +4,7 @@
 
 Zwidget is an <a href="https://github.com/electron/electron">Electron</a> app that allows you to easily launch widgets on your Windows desktop — well, sort of. The widgets are essentially browser windows that are stuck to the bottom of the Z-index stack when they're created (hence the name).
 
-<p align="center"><img src="example.gif"></img></p>
+<p align="center"><img src="assets/example.gif"></img></p>
 
 ## Anatomy
 
@@ -51,13 +51,25 @@ The script will also define a widget object in the `widgets.js` file, located in
 
 ## How to build the distributable
 
-In the root directory, run the build npm script:
+### The portable application
+
+In the root directory, run the `build-portable` npm script:
 
 ```bash
 npm run build
 ```
 
-The distributable files will be created in the `dist` folder, located in the root directory.
+The distributable files will be created in `dist/Zwidget-portable`.
+
+### The unpacked application
+
+To build only the unpacked application, run the `build-unpacked` npm script:
+
+```bash
+npm run build-unpacked
+```
+
+The distributable files will be created in `dist/Zwidget-win32-x64`
 
 ---------
 

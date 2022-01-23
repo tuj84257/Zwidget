@@ -9,7 +9,7 @@ const path = require('path');
  * @returns the Tray object
  */
  function createTray(mainWindow) {
-	let tray = new Tray(path.join(__dirname, "../../../zwidget.ico"));
+	let tray = new Tray(path.join(__dirname, "../../../assets/zwidget.ico"));
 	const contextMenu = Menu.buildFromTemplate([
 		{
 			label: 'Exit', 

@@ -8,13 +8,28 @@
 		"build-tailwind": "powershell ./scripts/buildTailwind.ps1",
 		"electron": "electron .",
 		"start": "npm run build-tailwind && npm run electron",
-		"build": "electron-packager . Zwidget --platform=win32 --arch=x64 --out=dist --icon=./zwidget.ico --overwrite=true"
+		"build-portable": "powershell ./scripts/checkPortableDirectory.ps1 && electron-builder build --win portable",
+		"build-unpacked": "electron-packager . Zwidget --platform=win32 --arch=x64 --out=dist --icon=./assets/zwidget.ico --overwrite=true"
+	},
+	"build": {
+		"appId": "zwidget",
+		"productName": "Zwidget",
+		"copyright": "Copyright (C) 2022 Ardit Duhanxhiu",
+		"artifactName": "Zwidget.exe",
+		"directories": {
+			"output": "dist/Zwidget-portable"
+		},
+		"icon": "assets/zwidget.ico",
+		"portable": {
+			"splashImage": "assets/zwidget.bmp3"
+		}
 	},
 	"repository": "https://github.com/tuj84257/Zwidget",
 	"author": "Ardit Duhanxhiu",
 	"devDependencies": {
 		"daisyui": "^1.16.6",
 		"electron": "^16.0.2",
+		"electron-builder": "^22.14.5",
 		"electron-packager": "^15.4.0",
 		"tailwindcss": "^3.0.6"
 	},
