@@ -37,7 +37,8 @@
 			"uninstallerIcon": "assets/zwidget.ico",
 			"uninstallDisplayName": "Zwidget",
 			"license": "LICENSE.md",
-			"allowToChangeInstallationDirectory": true
+			"allowToChangeInstallationDirectory": true,
+			"include": "scripts/installer.nsh"
 		}
 	},
 	"repository": "https://github.com/tuj84257/Zwidget",

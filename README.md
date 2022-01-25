@@ -61,6 +61,8 @@ npm run build
 
 The distributable files will be created in `dist/Zwidget`.
 
+> Since Microsoft Defender is often responsible for the slow startup of Electron apps, a PowerShell script, that adds the path to Zwidget's installation directory to the exclusion list of Microsoft Defender, is executed during installation. However, for the script to work, it is necessary to run the installer as an administrator.
+
 ### The unpacked application
 
 To build only the unpacked application, run the `build-unpacked` npm script:
