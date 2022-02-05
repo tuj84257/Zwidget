@@ -47,6 +47,23 @@ This script will generate these files in their respective directories:
 - A JavaScript preload file in the `src/[widget-name]/preload` directory. You will most likely never have to change this file.
 - A JavaScript file in `src/[widget-name]/backend`. This file will contain the backend logic of your widget.
 
+The file structure of the widget should look like this:
+
+```
+src/
+└── widget-name/
+    ├── backend/
+    │   └── backend.js
+    ├── frontend/
+    │   ├── css/
+    │   │   └── input.css
+    │   ├── javascript/
+    │   │   └── renderer.js
+    │   └── template.html
+    └── preload/
+        └── preload.js
+```
+
 The script will also define a widget object in the `widgets.js` file, located in `src/main-window`, and add this file to the `allWidgets` array. This is necessary for the window of the widget to be created when needed.
 
 ## How to build the distributable
