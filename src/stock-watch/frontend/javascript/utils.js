@@ -101,12 +101,12 @@ function displayStockInfo(stockSymbol, mainContent) {
                     <div>\
                         <p class="font-thin text-white">$${stockSymbol.toUpperCase()}</p>\
                         <div class="mt-9">\
-                            <p class="text-white text-3xl font-thin">$${stockData.lastClosingPrice}</p>\
+                            <p class="text-white text-3xl font-thin">$${stockData.lastClosingPrice.toLocaleString()}</p>\
                             <div class="flex ${classColor}">\
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${arrowRotationAngleClass} mt-1" viewBox="${arrowViewBox}" fill="currentColor">\
                                     <path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />\
                                 </svg>\
-                                <span class="-ml-1.5 text-sm">$${Math.abs(stockData.closingPriceDifference)} (${stockData.differencePercentage}%)</span>\
+                                <span class="-ml-1.5 text-sm">$${Math.abs(stockData.closingPriceDifference).toLocaleString()} (${stockData.differencePercentage}%)</span>\
                             </div>\
                         </div>\
                     </div>\
