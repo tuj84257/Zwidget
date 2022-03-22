@@ -94,3 +94,7 @@ The distributable files will be created in `dist/Zwidget-win32-x64`
 
 :point_right: This is where I obtained the awesome Zwidget icon:  <a href="https://www.flaticon.com/free-icons/shapes-and-symbols">Shapes and symbols icons created by Rakib Hassan Rahim - Flaticon</a>
 
+---------
+
+Like Zwidget? Just 🌟 the project!
+[Create issues](https://github.com/tuj84257/Zwidget/issues) if you find a bug.
