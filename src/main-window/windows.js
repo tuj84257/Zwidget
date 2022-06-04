@@ -111,6 +111,14 @@ class Widget {
 		window.setSkipTaskbar(true);
 		let screenScaleFactor = screen.getPrimaryDisplay().scaleFactor;
 		sendWindowToBottom(window, screenScaleFactor);
+
+		// Disable Chrome's context menu
+		const WM_INITMENU = 0x0116;
+		window.hookWindowMessage(WM_INITMENU, () => {
+			window.setEnabled(false);
+			window.setEnabled(true);
+		});
+
 		// window.webContents.openDevTools();
 		return window;
 	}
